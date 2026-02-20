@@ -1,13 +1,10 @@
 <<
-CREATE TABLE axp_tstructprops (
-	"name" varchar(5) NULL,
-	caption varchar(500) NULL,
-	keyfield varchar(200) NULL,
-	userconfigured bpchar(1) NULL,
-	createdon varchar(30) NULL,
-	updatedon varchar(30) NULL,
-	createdby varchar(100) NULL,
-	updatedby varchar(100) NULL
+CREATE TABLE axi_commands (
+	cmdtoken int4 NOT NULL,
+	command_group varchar(50) NOT NULL,
+	command varchar(50) NOT NULL,
+	active varchar(1) NULL DEFAULT 'T'::character varying,
+	CONSTRAINT axi_commands_pkey PRIMARY KEY (cmdtoken)
 )
 >>
 
@@ -28,14 +25,64 @@ CREATE TABLE axi_command_prompts (
 >>
 
 <<
-CREATE TABLE axi_commands (
-	cmdtoken int4 NOT NULL,
-	command_group varchar(50) NOT NULL,
-	command varchar(50) NOT NULL,
-	active varchar(1) NULL DEFAULT 'T'::character varying,
-	CONSTRAINT axi_commands_pkey PRIMARY KEY (cmdtoken)
+CREATE TABLE axp_tstructprops (
+	"name" varchar(5) NULL,
+	caption varchar(500) NULL,
+	keyfield varchar(200) NULL,
+	userconfigured bpchar(1) NULL,
+	createdon varchar(30) NULL,
+	updatedon varchar(30) NULL,
+	createdby varchar(100) NULL,
+	updatedby varchar(100) NULL
 )
 >>
+
+--axi_commands starts here
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(1, 'create', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(2, 'edit', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(3, 'view', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(4, 'configure', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(5, 'upload', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(6, 'download', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(7, 'open', '', 'T')
+>>
+
+--Not used now
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(8, 'set', '', 'F')
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(9, 'run', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(10, 'analyse', '', 'T')
+>>
+
+<<
+INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(11, 'ai', '', 'T')
+>>
+
+--axi_command_prompts starts here
 
 <<
 INSERT INTO axi_command_prompts (id, cmdtoken, wordpos, prompt, promptsource, promptparams, promptvalues, props, extraparams, requesturl) VALUES('b767f878-6f6f-4d72-8a52-f987d5dc9064'::uuid, 1, 2, 'tstruct name', 'Axi_TStructList', NULL, NULL, NULL, NULL, NULL)
@@ -123,48 +170,4 @@ INSERT INTO axi_command_prompts (id, cmdtoken, wordpos, prompt, promptsource, pr
 
 <<
 INSERT INTO axi_command_prompts (id, cmdtoken, wordpos, prompt, promptsource, promptparams, promptvalues, props, extraparams, requesturl) VALUES('c6b1f464-95ef-4f87-93e0-4b78b44da6c9'::uuid, 11, 2, 'name', NULL, NULL, 'start', NULL, NULL, NULL)
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(1, 'create', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(2, 'edit', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(3, 'view', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(4, 'configure', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(5, 'upload', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(6, 'download', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(7, 'open', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(8, 'set', '', 'F')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(9, 'run', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(10, 'analyse', '', 'T')
->>
-
-<<
-INSERT INTO axi_commands (cmdtoken, command_group, command, active) VALUES(11, 'ai', '', 'T')
 >>
