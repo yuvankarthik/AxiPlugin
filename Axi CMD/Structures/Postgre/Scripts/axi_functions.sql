@@ -233,7 +233,7 @@ IF v_sourcekey = 'F' THEN
     UNION ALL
     SELECT (caption || ' (' || fname || ')' || ' [' || 'field' || ']')::text AS displaydata,
            '0'::text AS id,
-           fname::text AS caption,
+           caption::text AS caption,
            't'::text AS isfield  
     FROM axpflds
     WHERE tstruct = %L
@@ -259,7 +259,7 @@ ELSE
     UNION ALL
     SELECT (caption || ' (' || fname || ') [' || 'field' || ']')::text AS displaydata,
            '0'::text AS id,
-           fname::text AS caption,
+           caption::text AS caption,
            't'::text AS isfield
     FROM axpflds
     WHERE tstruct = %L
