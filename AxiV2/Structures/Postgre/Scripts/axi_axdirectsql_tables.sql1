@@ -33,6 +33,22 @@ CREATE TABLE axdirectsql (
 >>
 
 <<
+ALTER TABLE axdirectsql ADD cachedata varchar(1) NULL
+>>
+
+<<
+ALTER TABLE axdirectsql ADD cacheinterval varchar(10) NULL
+>>
+
+<<
+ALTER TABLE.axdirectsql ADD encryptedflds varchar(4000) NULL
+>>
+
+<<
+ALTER TABLE axdirectsql ADD adsdesc text NULL
+>>
+
+<<
 CREATE TABLE axdirectsql_metadata (
 	axdirectsql_metadataid numeric(16) NOT NULL,
 	axdirectsqlid numeric(16) NULL,
@@ -206,4 +222,10 @@ INSERT INTO axdirectsql (axdirectsqlid, cancel, sourceid, mapname, username, mod
 <<
 INSERT INTO axdirectsql (axdirectsqlid, cancel, sourceid, mapname, username, modifiedon, createdby, createdon, wkid, app_level, app_desc, app_slevel, cancelremarks, wfroles, sqlname, ddldatatype, sqlsrc, sqlsrccnd, sqltext, paramcal, sqlparams, accessstring, groupname, sqlquerycols, cachedata, cacheinterval, encryptedflds, adsdesc, smartlistcnd)
 VALUES(2941010000222, 'F', 0, NULL, 'admin', '2025-12-23 20:50:43.000', 'admin', '2025-12-23 20:50:43.000', NULL, 1, 1, NULL, NULL, NULL, 'axi_firesql', NULL, 'Application', 5, 'select * from axi_firesql_v2(:param1,:param2,:param3,:param4)', 'param1,param2,param3,param4', 'param1~~,param2~~,param3~~,param4~~', 'ALL', NULL, NULL, 'F', '6 Hr', NULL, NULL, NULL)
+>>
+
+<<
+INSERT INTO axdirectsql
+(axdirectsqlid, cancel, sourceid, mapname, username, modifiedon, createdby, createdon, wkid, app_level, app_desc, app_slevel, cancelremarks, wfroles, sqlname, ddldatatype, sqlsrc, sqlsrccnd, sqltext, paramcal, sqlparams, accessstring, groupname, sqlquerycols, cachedata, cacheinterval, encryptedflds, adsdesc, smartlistcnd)
+VALUES(59877900076046, 'F', 0, NULL, 'admin', '2025-12-23 13:22:07.000', 'admin', '2025-12-19 16:06:57.000', NULL, 1, 1, NULL, NULL, NULL, 'axi_userpwd', NULL, 'Application', 5, 'select password  from axusers where username = :param1', 'param1', 'param1', 'ALL', NULL, NULL, 'F', '6 Hr', NULL, NULL, NULL);
 >>

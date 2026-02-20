@@ -88,6 +88,7 @@ DECLARE
     v_srctf text; 
     v_keyfield text; 
 BEGIN 
+    p_fieldname := lower(p_fieldname);
     SELECT keyfield INTO v_keyfield 
     FROM axp_tstructprops 
     WHERE name = p_tstruct 
@@ -118,7 +119,7 @@ BEGIN
     SELECT srckey, srcfld, srctf INTO v_sourcekey, v_srcfld, v_srctf 
     FROM axpflds 
     WHERE tstruct = p_tstruct 
-      AND fname = p_fieldname; 
+      AND lower(fname) = lower(p_fieldname); 
     IF v_keyfield IS NULL
        OR v_tablename IS NULL
        OR v_sourcekey IS NULL THEN
@@ -232,7 +233,7 @@ IF v_sourcekey = 'F' THEN
     UNION ALL
     SELECT (caption || ' (' || fname || ')' || ' [' || 'field' || ']')::text AS displaydata,
            '0'::text AS id,
-           caption::text AS caption,
+           fname::text AS caption,
            't'::text AS isfield  
     FROM axpflds
     WHERE tstruct = %L
@@ -258,7 +259,7 @@ ELSE
     UNION ALL
     SELECT (caption || ' (' || fname || ') [' || 'field' || ']')::text AS displaydata,
            '0'::text AS id,
-           caption::text AS caption,
+           fname::text AS caption,
            't'::text AS isfield
     FROM axpflds
     WHERE tstruct = %L
