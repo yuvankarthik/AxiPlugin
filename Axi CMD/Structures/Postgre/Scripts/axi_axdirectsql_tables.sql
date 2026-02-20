@@ -41,7 +41,7 @@ ALTER TABLE axdirectsql ADD cacheinterval varchar(10) NULL
 >>
 
 <<
-ALTER TABLE.axdirectsql ADD encryptedflds varchar(4000) NULL
+ALTER TABLE axdirectsql ADD encryptedflds varchar(4000) NULL
 >>
 
 <<
